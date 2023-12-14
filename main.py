@@ -8,7 +8,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 import config
 from handler import routers
 #from handler.handler_admin import routers as routers_admin
-#from test import router as r1
+from test import router as r1
 
 
 async def main():
@@ -19,7 +19,7 @@ async def main():
     #     dp.include_router(router)
     for router in routers:
         dp.include_router(router)
-    #dp.include_router(r1)
+    dp.include_router(r1)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
 

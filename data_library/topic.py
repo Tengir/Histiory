@@ -1,5 +1,7 @@
 class Topic:
-    def __init__(self, name, question_list=[]):
+    def __init__(self, name, description, sub_topic_list):
         self.name = name
-        self.count_question = len(question_list)
-        self.question_list = question_list
+        self.description = description
+        self.count_sub_topic = len(sub_topic_list)
+        self.len_sub_topic = len(sub_topic_list[0].question_list)
+        self.sub_topic_list = sub_topic_list
