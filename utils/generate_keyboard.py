@@ -3,6 +3,7 @@ from data.data_topics import topics
 from data_library.topic import Topic
 
 
+
 def generate_question_keyboard(num: int):
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=str(i), callback_data=str(i - 1))] for i in
