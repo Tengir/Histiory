@@ -3,7 +3,6 @@ from data.data_topics import topics
 from data_library.topic import Topic
 
 
-
 def generate_question_keyboard(num: int):
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text=str(i), callback_data=str(i - 1))] for i in
@@ -12,14 +11,15 @@ def generate_question_keyboard(num: int):
     return kb
 
 
-def generate_topic_keyboard(topic:Topic):
+def generate_topic_keyboard(topic: Topic, used_buttons: set):
     names = [sub_top.name for sub_top in topic.sub_topic_list]
     row = topic.len_sub_topic
     col = topic.count_sub_topic
     kb = InlineKeyboardMarkup(inline_keyboard=
-        [[InlineKeyboardButton(text=names[i], callback_data="None") for i in range(col)]] +
-        [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"{j}:{i}") for i in range(col)] for j in range(row)]
-    , resize_keyboard=True)
+                              [[InlineKeyboardButton(text=names[i], callback_data="None") for i in range(col)]] +
+                              [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"{j}:{i}") if (j, i) not in used_buttons
+                                else InlineKeyboardButton(text="❌", callback_data="None") for i in
+                                range(col)] for j in range(row)], resize_keyboard=True)
     return kb
 
 
