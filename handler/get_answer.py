@@ -16,7 +16,7 @@ router = Router()
 async def get_answer(callback: CallbackQuery, bot: Bot, state: FSMContext):
     data: dict = await state.get_data()
     num_topic = data["num_topic"]
-    x, y = data["num_question"]
+    y, x = data["num_question"] # Позиция вопроса.
 
     id_chat = callback.message.chat.id # id чата.
 

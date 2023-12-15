@@ -21,7 +21,7 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
 
     await bot.delete_message(chat_id=id_chat, message_id=callback.message.message_id) # Удаляем это сообщение.
 
-    x,y = [int(i) for i in callback.data[len("question"):].split(":")]
+    y,x = [int(i) for i in callback.data[len("question"):].split(":")]
 
     await state.update_data(num_question=(x, y))
     question_now = topics[num_topic].sub_topic_list[x].question_list[y]
