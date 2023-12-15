@@ -4,6 +4,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.fsm.strategy import FSMStrategy
 
 import config
 from handler import routers
@@ -13,7 +14,7 @@ from test import router as r1
 
 async def main():
     bot = Bot(token=config.TOKEN, parse_mode=ParseMode.HTML)
-    dp = Dispatcher(storage=MemoryStorage())
+    dp = Dispatcher(storage=MemoryStorage(), fsm_strategy=FSMStrategy.CHAT)
     # Добавляем роутер пользовательский и админский.
     # for router in routers_admin:
     #     dp.include_router(router)
