@@ -1,5 +1,8 @@
+from data_library.sub_topic import SubTopic
+
+
 class Topic:
-    def __init__(self, name, description, sub_topic_list):
+    def __init__(self, name, description: str = "", sub_topic_list: list = None):
         self.name = name
         self.description = description
         self.count_sub_topic = len(sub_topic_list)

@@ -3,6 +3,8 @@
 from data_library.question import Question
 from data_library.topic import Topic
 from data_library.sub_topic import SubTopic
+from data_library.Message import Message
+
 
 topics_name = ["Культура СССР", "Правление Романовых", "Древняя Русь"]
 sub_topics_name = [["Фильмы", "Плакаты", "Песни", "Архитектура"],
@@ -368,7 +370,8 @@ audios = [[["", "", "", ""], ["", "", "", ""],
           [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
 
 topics = [
-    Topic(topic, "", [SubTopic(stn, [Question(questions[i][j][k], correct_answers[i][j][k], 4, information[i][j][k], first_photos[i][j][k], output_photos[i][j][k], audio=audios[i][j][k])
+    Topic(topic, "", [SubTopic(stn, [Question(correct_answers[i][j][k], 4, Message(questions[i][j][k], first_photos[i][j][k], audio=audios[i][j][k]),
+                                              Message(information[i][j][k], output_photos[i][j][k]))
                                      for k in range(4)]) for j, stn in enumerate(sub_topics_name[i])])
     for i, topic in enumerate(topics_name)]
 
