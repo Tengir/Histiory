@@ -4,7 +4,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.filters import StateFilter
 
 from utils.send_message import send_message
-from utils.generate_keyboard import generate_topic_keyboard
+from utils.generate_keyboard import generate_question_keyboard
 
 from data.data_topics import topics
 from state import StateBot
@@ -23,7 +23,7 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
 
     x,y = [int(i) for i in callback.data[len("question"):].split(":")]
 
-    msg = topics[num_topic].sub_topic_list[x].question_list[y].question_text
-
-    await send_message(id_chat, bot, caption=msg)
+    question_now = topics[num_topic].sub_topic_list[x].question_list[y]
+    msg = question_now.question_text
+    await send_message(id_chat, bot, caption=msg, inline_keyboard=generate_question_keyboard(question_now.answer_count))
     await callback.answer()
