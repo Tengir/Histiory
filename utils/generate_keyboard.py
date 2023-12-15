@@ -16,12 +16,10 @@ def generate_topic_keyboard(topic:Topic):
     names = [sub_top.name for sub_top in topic.sub_topic_list]
     row = topic.len_sub_topic
     col = topic.count_sub_topic
-    kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=names[i], callback_data="") for i in
-         range(col)],
-        *[[InlineKeyboardButton(text=str(i + 1), callback_data=str(i - 1)) for i
-          in range(col)] for j in range(row)]
-    ], resize_keyboard=True)
+    kb = InlineKeyboardMarkup(inline_keyboard=
+        [[InlineKeyboardButton(text=names[i], callback_data="None") for i in range(col)]] +
+        [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"{j}:{i}") for i in range(col)] for j in range(row)]
+    , resize_keyboard=True)
     return kb
 
 
