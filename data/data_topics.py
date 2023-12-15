@@ -358,7 +358,16 @@ output_photos = [[["", "", "", ""],
                  [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]],
                  [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
 
+audios = [[["", "", "", ""], ["", "", "", ""],
+           ["AwACAgIAAxkBAAISA2V8saH3A7pmhi_uloQeoqX-0bSEAAJHNwACDlLpSyOCdtyHVVTxMwQ",
+            "AwACAgIAAxkBAAISBWV8sdJJtsH9RxscSLltKMKylq8BAAJLNwACDlLpS1EzQdsyoaf_MwQ",
+            "AwACAgIAAxkBAAISB2V8sekj9-Mapdqfa-T_ef1okgIuAAJMNwACDlLpS7Xndp9OQqi3MwQ",
+            "AwACAgIAAxkBAAISCWV8sgABv0l-vn-uJcZyr8tM3KqTNQACTjcAAg5S6Utg1TRdfDd0TjME"],
+           ["", "", "", ""]],
+          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]],
+          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
+
 topics = [
-    Topic(topic, "", [SubTopic(stn, [Question(questions[i][j][k], correct_answers[i][j][k], 4, information[i][j][k], first_photos[i][j][k], output_photos[i][j][k])
+    Topic(topic, "", [SubTopic(stn, [Question(questions[i][j][k], correct_answers[i][j][k], 4, information[i][j][k], first_photos[i][j][k], output_photos[i][j][k], audio=audios[i][j][k])
                                      for k in range(4)]) for j, stn in enumerate(sub_topics_name[i])])
     for i, topic in enumerate(topics_name)]
