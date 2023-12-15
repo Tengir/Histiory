@@ -328,9 +328,37 @@ correct_answers = [[["1", "2", "2", "3"], ["1", "2", "1", "3"], ["1", "2", "3", 
                    [["2", "3", "2", "1"], ["2", "1", "1", "3"], ["2", "1", "3", "2"], ["1", "3", "2", "3"]],
                    [["1", "3", "4", "1"], ["1", "2", "3", "2"], ["2", "4", "1", "4"], ["2", "4", "2", "3"]]]
 
+first_photos = [[["AgACAgIAAxkBAAIR1WV8qrmnmuJYeOvdKw56E_SZOZvzAAIK1jEbDlLpSwABTbyq5UGjgwEAAwIAA3MAAzME",
+                  "AgACAgIAAxkBAAIR12V8qwIGx0u0rmlAAYp1dbha1fpnAAIV1jEbDlLpS1QkkiNkCltEAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR2WV8qzMjINpRm_Pb7DL-PnLdL-iJAAIc1jEbDlLpS8D1arbJxWpvAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR22V8q05wA4Pmq3u_0qg3OmfPlCHnAAIg1jEbDlLpSzakHFKXx_yEAQADAgADcwADMwQ"],
+                 ["AgACAgIAAxkBAAIR3WV8rClpTiRh8RXC4M3x4GhiguG-AAJE1jEbDlLpS7CdhcaEzFQ8AQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR32V8rDzcWvdAN2HqgpAZirt4naDuAAJF1jEbDlLpSxcgr4M2dhezAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR4WV8rFEX-Evj6RZjSWFp4mftFCjYAAJG1jEbDlLpS7RLICaSqv8oAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR42V8rGP0pbAxt5fNoSLUnV9rysA5AAJI1jEbDlLpS-B_icQ92I3SAQADAgADcwADMwQ"],
+                 ["", "", "", ""],
+                 ["AgACAgIAAxkBAAIR5WV8rKZiG71lY8tKnGEcEsET5iV5AAJL1jEbDlLpS9XRVfUTShgFAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR52V8rLUOxEaN-hNgT9ev9Qez6NsKAAJM1jEbDlLpS6-P0KJutcxTAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR6WV8rNq8rz9N26wIoFrnENaFYIiJAAJN1jEbDlLpS-XpLpbVagXoAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR62V8rQlCw8O8NqPJKceTVmv9j5ffAAJP1jEbDlLpS2RSgPeWeRn4AQADAgADcwADMwQ"]],
+                [["", "", "", ""], ["", "", "", ""],
+                 ["AgACAgIAAxkBAAIR7WV8rY4YGFRQZnY4HsGy0hE9_6LyAAJf1jEbDlLpSzQdtWhwEonKAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR72V8ra67NvH85JBjSCnIb1kyMrreAAJh1jEbDlLpSwaGCpDXUMaeAQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR8WV8rcFCnZiDjvKJkt6qt013bGFNAAJj1jEbDlLpS7MJdpiUMZk0AQADAgADcwADMwQ",
+                  "AgACAgIAAxkBAAIR82V8rdIZcSasuMYs_RD5NmPQ4qRZAAJk1jEbDlLpS33YGCAObWpUAQADAgADcwADMwQ"],
+                 ["", "", "", ""]],
+                [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
 
+output_photos = [[["", "", "", ""],
+                  ["AgACAgIAAxkBAAIR9WV8rq8jz6uHFwABH-bPOR5AeKzTVwACcNYxGw5S6UtB0vpBIV7seQEAAwIAA3MAAzME",
+                   "AgACAgIAAxkBAAIR92V8rshV2oLou3T2lk5uIv0iEf1BAAJx1jEbDlLpS1nCtdRk2Gw7AQADAgADcwADMwQ",
+                   "AgACAgIAAxkBAAIR-WV8rtvip-cDx8FfBaXjtN8qOkg1AAJz1jEbDlLpSyR6Wp7ldvM6AQADAgADcwADMwQ",
+                   "AgACAgIAAxkBAAIR-2V8rvMkjV4jJery_tYEnUcQyNrVAAJ01jEbDlLpS-bYUBWGDitiAQADAgADcwADMwQ"],
+                  ["", "", "", ""], ["", "", "", ""]],
+                 [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]],
+                 [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
 
 topics = [
-    Topic(topic, "", [SubTopic(stn, [Question(questions[i][j][k], correct_answers[i][j][k], 4, information[i][j][k], )
+    Topic(topic, "", [SubTopic(stn, [Question(questions[i][j][k], correct_answers[i][j][k], 4, information[i][j][k], first_photos[i][j][k], output_photos[i][j][k])
                                      for k in range(4)]) for j, stn in enumerate(sub_topics_name[i])])
     for i, topic in enumerate(topics_name)]
