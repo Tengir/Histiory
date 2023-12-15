@@ -5,8 +5,8 @@ from data_library.topic import Topic
 
 def generate_question_keyboard(num: int):
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=str(i), callback_data=str(i - 1))] for i in
-        range(1, num + 1)
+        [InlineKeyboardButton(text=f"answer{i + 1}", callback_data=str(i))] for i in
+        range(num)
     ], resize_keyboard=True)
     return kb
 

@@ -3,7 +3,7 @@
 from data_library.question import Question
 from data_library.topic import Topic
 from data_library.sub_topic import SubTopic
-from data_library.Message import Message
+from data_library.message import Message
 
 
 topics_name = ["Культура СССР", "Правление Романовых", "Древняя Русь"]

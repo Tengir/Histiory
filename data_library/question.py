@@ -1,4 +1,4 @@
-from data_library.Message import Message
+from data_library.message import Message
 
 
 class Question:
