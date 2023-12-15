@@ -10,4 +10,4 @@ router = Router()
 
 @router.message(F.text.lower().in_(["/start", "запуск", "старт", "начать"]))
 async def start_menu(msg: Message, bot: Bot):
-    await send_message(msg.from_user.id, bot=bot, caption=start_message, inline_keyboard=generate_start_keyboard())
+    await send_message(msg.chat.id, bot=bot, caption=start_message, inline_keyboard=generate_start_keyboard())
