@@ -21,13 +21,12 @@ async def start_quest(callback: CallbackQuery, bot: Bot, state: FSMContext):
     await bot.delete_message(chat_id=id_chat, message_id=callback.message.message_id) # Удаляем предыдущ. сообщ..
 
     num_topic = int(callback.data.split(":")[1])
-    id_msg = callback.message.message_id
-    await state.update_data(num_topic=num_topic)
+
     msg_ans = topics[num_topic].description
     if msg_ans == "":
         msg_ans = topics[num_topic].name
 
-    await state.update_data(num_topic=num_topic)
+    await state.update_data(num_topic=num_topic, score_users=dict(), used_question = set(), answers_now_question=dict())
 
     await send_message(id=id_chat, bot=bot, caption=msg_ans, inline_keyboard=generate_topic_keyboard(topics[num_topic]))
     await callback.answer()
