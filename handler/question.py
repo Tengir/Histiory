@@ -5,7 +5,7 @@ import asyncio
 
 from utils.send_message import send_message
 from utils.generate_keyboard import generate_question_keyboard, generate_topic_keyboard, generate_final_keyboard
-from utils.generate_top import generate_top
+from utils.generate_top import generate_top, generate_winner
 
 from data.data_topics import topics
 
@@ -95,7 +95,7 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     # Проверяем остались ли ещё вопросы.
 
     if len(data["used_question"]) == topics[num_topic].len_sub_topic * len(topics[num_topic].sub_topic_list[0].question_list):
-        msg = await send_message(id=id_chat, bot=bot, caption=generate_top(score_users), inline_keyboard=generate_final_keyboard())
+        msg = await send_message(id=id_chat, bot=bot, caption=generate_winner(score_users) + "\n\n" + generate_top(score_users), inline_keyboard=generate_final_keyboard())
 
         await state.update_data(bot_quest_message="")
         return
