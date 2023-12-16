@@ -55,7 +55,7 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     print("Вышли таймер")
     ###########################################################################
 
-    # Удаляем сообщение с выбором ответа на вопрос.
+    # Удаляем сообщение с выбором ответа на вопрос И добавляем в использованный вопрос в дату.
 
     await bot.delete_message(chat_id=id_chat,
                              message_id=msg_question.message_id)  # Удаляем сообщение с вопросом.
@@ -87,11 +87,16 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
         score_users[username] = score_users.setdefault(username, 0)
         if ans_user == question_now.correct_answer: # Прибавляем, если правильно ответил.
             print(int(question_now.correct_answer))
-            score_users[username] += 10 * int(question_now.correct_answer)
+            score_users[username] += 10 * int(y + 1) # Прибавляем номер вопроса по строке.
     await state.update_data(score_users=score_users)
     print("Закончили с ответами")
     ###########################################################################
 
+    # Проверяем остались ли ещё вопросы.
+
+
+
+    ###########################################################################
     # Выслыаем таблицу с вопросами.
     msg_ans = topics[num_topic].description
     if msg_ans == "":

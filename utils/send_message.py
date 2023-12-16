@@ -5,7 +5,7 @@ from data_library.message import Message
 
 
 async def send_message(id: int, bot: Bot, caption: str = "", video: str = None,
-                       photo: str = None, voice: str = None,
+                       photo=None, voice = None,
                        inline_keyboard: InlineKeyboardMarkup = None,
                        message: Message = None):
     if message is not None:

@@ -8,7 +8,6 @@ from data_library.topic import Topic
 from data_library.sub_topic import SubTopic
 from data_library.message import Message
 
-
 topics_name = ["Культура СССР", "Правление Романовых", "Древняя Русь"]
 sub_topics_name = [["Фильмы", "Плакаты", "Песни", "Архитектура"],
                    ["Персоналии", "События", "Портреты", "Разное"],
@@ -329,52 +328,107 @@ information = [[[
             '''В древней Руси было особенно развито деревянное зодчество.'''
         ]]]
 
-correct_answers = [[["1", "2", "2", "3"], ["1", "2", "1", "3"], ["1", "2", "3", "2"], ["1", "2", "3", "3"]],
-                   [["2", "3", "2", "1"], ["2", "1", "1", "3"], ["2", "1", "3", "2"], ["1", "3", "2", "3"]],
-                   [["1", "3", "4", "1"], ["1", "2", "3", "2"], ["2", "4", "1", "4"], ["2", "4", "2", "3"]]]
+correct_answers = [
+    [["1", "2", "2", "3"], ["1", "2", "1", "3"], ["1", "2", "3", "2"],
+     ["1", "2", "3", "3"]],
+    [["2", "3", "2", "1"], ["2", "1", "1", "3"], ["2", "1", "3", "2"],
+     ["1", "3", "2", "3"]],
+    [["1", "3", "4", "1"], ["1", "2", "3", "2"], ["2", "4", "1", "4"],
+     ["2", "4", "2", "3"]]]
 
-first_photos = [[["AgACAgIAAxkBAAIR1WV8qrmnmuJYeOvdKw56E_SZOZvzAAIK1jEbDlLpSwABTbyq5UGjgwEAAwIAA3MAAzME",
-                  "AgACAgIAAxkBAAIR12V8qwIGx0u0rmlAAYp1dbha1fpnAAIV1jEbDlLpS1QkkiNkCltEAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR2WV8qzMjINpRm_Pb7DL-PnLdL-iJAAIc1jEbDlLpS8D1arbJxWpvAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR22V8q05wA4Pmq3u_0qg3OmfPlCHnAAIg1jEbDlLpSzakHFKXx_yEAQADAgADcwADMwQ"],
-                 ["AgACAgIAAxkBAAIR3WV8rClpTiRh8RXC4M3x4GhiguG-AAJE1jEbDlLpS7CdhcaEzFQ8AQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR32V8rDzcWvdAN2HqgpAZirt4naDuAAJF1jEbDlLpSxcgr4M2dhezAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR4WV8rFEX-Evj6RZjSWFp4mftFCjYAAJG1jEbDlLpS7RLICaSqv8oAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR42V8rGP0pbAxt5fNoSLUnV9rysA5AAJI1jEbDlLpS-B_icQ92I3SAQADAgADcwADMwQ"],
-                 ["", "", "", ""],
-                 ["AgACAgIAAxkBAAIR5WV8rKZiG71lY8tKnGEcEsET5iV5AAJL1jEbDlLpS9XRVfUTShgFAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR52V8rLUOxEaN-hNgT9ev9Qez6NsKAAJM1jEbDlLpS6-P0KJutcxTAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR6WV8rNq8rz9N26wIoFrnENaFYIiJAAJN1jEbDlLpS-XpLpbVagXoAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR62V8rQlCw8O8NqPJKceTVmv9j5ffAAJP1jEbDlLpS2RSgPeWeRn4AQADAgADcwADMwQ"]],
-                [["", "", "", ""], ["", "", "", ""],
-                 ["AgACAgIAAxkBAAIR7WV8rY4YGFRQZnY4HsGy0hE9_6LyAAJf1jEbDlLpSzQdtWhwEonKAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR72V8ra67NvH85JBjSCnIb1kyMrreAAJh1jEbDlLpSwaGCpDXUMaeAQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR8WV8rcFCnZiDjvKJkt6qt013bGFNAAJj1jEbDlLpS7MJdpiUMZk0AQADAgADcwADMwQ",
-                  "AgACAgIAAxkBAAIR82V8rdIZcSasuMYs_RD5NmPQ4qRZAAJk1jEbDlLpS33YGCAObWpUAQADAgADcwADMwQ"],
-                 ["", "", "", ""]],
-                [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
+first_photos = [[[
+    'AgACAgIAAxkDAAMtZX3GycvT6v_m3dGmQbK7NL6wqMUAApnSMRvmOOlLozkxXvj_AAHwAQADAgADeQADMwQ',
+    'AgACAgIAAxkDAAMuZX3GyQABxvm0SX7XNWAfKnrVvQiGAAKa0jEb5jjpS1U1vwpKtppiAQADAgADeQADMwQ',
+    'AgACAgIAAxkDAAMvZX3GysbCe2c2i9BksRnvE-ntmFEAApvSMRvmOOlLa_H_Eha6UGkBAAMCAAN5AAMzBA',
+    'AgACAgIAAxkDAAMwZX3Gykl1hsHlzGLaY017P6J_DHkAApzSMRvmOOlLHexY_7tIe-0BAAMCAAN5AAMzBA'],
+    [
+        'AgACAgIAAxkDAAMxZX3GysffRYj6RS8tUmGkXXn6IhkAAp3SMRvmOOlL9J_Pn2wx0g0BAAMCAAN4AAMzBA',
+        'AgACAgIAAxkDAAMyZX3Gy4QJAyjjibjKNw9t2GtmgQsAAp7SMRvmOOlLjJkuxaEH08gBAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAMzZX3Gy3vBzr3wliVFay-GUUi6qR8AAp_SMRvmOOlLMpa-xmC8SZMBAAMCAAN4AAMzBA',
+        'AgACAgIAAxkDAAM0ZX3Gy1vFUs8DN2NpuagiReXDJWYAAqDSMRvmOOlL9rOw7ZfnUu0BAAMCAAN4AAMzBA'],
+    ['', '', '', ''], [
+        'AgACAgIAAxkDAAM1ZX3GzP-XM8YH8y1At18nEiP-1UkAAqHSMRvmOOlLJUkTk47fpskBAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAM2ZX3GzS9cFKAj0j4mr8nyN9rw060AAqLSMRvmOOlLwdTDWL6diJsBAAMCAAN4AAMzBA',
+        'AgACAgIAAxkDAAM3ZX3Gzla4xmKzSq7DUQ9ca-eeeFAAAqPSMRvmOOlLv9O3hxL7ky8BAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAM4ZX3GzjMt8p7LP6aplM0kZvhOW7wAAqTSMRvmOOlLkesUHYBpu2YBAAMCAAN5AAMzBA']],
+    [['', '', '', ''], ['', '', '', ''], [
+        'AgACAgIAAxkDAAM5ZX3Gz-3K_Hgxg2UynCV_oRFFzE8AAqXSMRvmOOlLrBT44UJPrqcBAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAM6ZX3G0DjuZUSTHuV2PFdzUquGe24AAqbSMRvmOOlLRp0zeNbi0akBAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAM7ZX3G0YMpFIPcA9m04PZjQsSEZIgAAqfSMRvmOOlLvyZzA-e36wcBAAMCAAN5AAMzBA',
+        'AgACAgIAAxkDAAM8ZX3G0ojQ0I95Ttk0r81PSnP5HHUAAqjSMRvmOOlLzEP9qr3tEvwBAAMCAAN5AAMzBA'],
+     ['', '', '', '']],
+    [['', '', '', ''], ['', '', '', ''], ['', '', '', ''],
+     ['', '', '', '']]]
 
-output_photos = [[["", "", "", ""],
-                  ["AgACAgIAAxkBAAIR9WV8rq8jz6uHFwABH-bPOR5AeKzTVwACcNYxGw5S6UtB0vpBIV7seQEAAwIAA3MAAzME",
-                   "AgACAgIAAxkBAAIR92V8rshV2oLou3T2lk5uIv0iEf1BAAJx1jEbDlLpS1nCtdRk2Gw7AQADAgADcwADMwQ",
-                   "AgACAgIAAxkBAAIR-WV8rtvip-cDx8FfBaXjtN8qOkg1AAJz1jEbDlLpSyR6Wp7ldvM6AQADAgADcwADMwQ",
-                   "AgACAgIAAxkBAAIR-2V8rvMkjV4jJery_tYEnUcQyNrVAAJ01jEbDlLpS-bYUBWGDitiAQADAgADcwADMwQ"],
-                  ["", "", "", ""], ["", "", "", ""]],
-                 [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]],
-                 [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
+first_photos_test = [[[
+    "AgACAgIAAxkBAAIR1WV8qrmnmuJYeOvdKw56E_SZOZvzAAIK1jEbDlLpSwABTbyq5UGjgwEAAwIAA3MAAzME",
+    "AgACAgIAAxkBAAIR12V8qwIGx0u0rmlAAYp1dbha1fpnAAIV1jEbDlLpS1QkkiNkCltEAQADAgADcwADMwQ",
+    "AgACAgIAAxkBAAIR2WV8qzMjINpRm_Pb7DL-PnLdL-iJAAIc1jEbDlLpS8D1arbJxWpvAQADAgADcwADMwQ",
+    "AgACAgIAAxkBAAIR22V8q05wA4Pmq3u_0qg3OmfPlCHnAAIg1jEbDlLpSzakHFKXx_yEAQADAgADcwADMwQ"],
+    [
+        "AgACAgIAAxkBAAIR3WV8rClpTiRh8RXC4M3x4GhiguG-AAJE1jEbDlLpS7CdhcaEzFQ8AQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR32V8rDzcWvdAN2HqgpAZirt4naDuAAJF1jEbDlLpSxcgr4M2dhezAQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR4WV8rFEX-Evj6RZjSWFp4mftFCjYAAJG1jEbDlLpS7RLICaSqv8oAQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR42V8rGP0pbAxt5fNoSLUnV9rysA5AAJI1jEbDlLpS-B_icQ92I3SAQADAgADcwADMwQ"],
+    ["", "", "", ""],
+    [
+        "AgACAgIAAxkBAAIR5WV8rKZiG71lY8tKnGEcEsET5iV5AAJL1jEbDlLpS9XRVfUTShgFAQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR52V8rLUOxEaN-hNgT9ev9Qez6NsKAAJM1jEbDlLpS6-P0KJutcxTAQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR6WV8rNq8rz9N26wIoFrnENaFYIiJAAJN1jEbDlLpS-XpLpbVagXoAQADAgADcwADMwQ",
+        "AgACAgIAAxkBAAIR62V8rQlCw8O8NqPJKceTVmv9j5ffAAJP1jEbDlLpS2RSgPeWeRn4AQADAgADcwADMwQ"]],
+    [["", "", "", ""], ["", "", "", ""],
+     [
+         "AgACAgIAAxkBAAIR7WV8rY4YGFRQZnY4HsGy0hE9_6LyAAJf1jEbDlLpSzQdtWhwEonKAQADAgADcwADMwQ",
+         "AgACAgIAAxkBAAIR72V8ra67NvH85JBjSCnIb1kyMrreAAJh1jEbDlLpSwaGCpDXUMaeAQADAgADcwADMwQ",
+         "AgACAgIAAxkBAAIR8WV8rcFCnZiDjvKJkt6qt013bGFNAAJj1jEbDlLpS7MJdpiUMZk0AQADAgADcwADMwQ",
+         "AgACAgIAAxkBAAIR82V8rdIZcSasuMYs_RD5NmPQ4qRZAAJk1jEbDlLpS33YGCAObWpUAQADAgADcwADMwQ"],
+     ["", "", "", ""]],
+    [["", "", "", ""], ["", "", "", ""], ["", "", "", ""],
+     ["", "", "", ""]]]
+output_photos = [[['', '', '', ''], [
+    'AgACAgIAAxkDAANDZX3JcN8Xr03hj15Pi3K6Wtd-H7EAArbSMRvmOOlL1japbEwWySsBAAMCAAN4AAMzBA',
+    'AgACAgIAAxkDAANEZX3JcRDLMbkfhgJqYqos2CHxenAAArfSMRvmOOlLuBbL0Hd_0DIBAAMCAAN5AAMzBA',
+    'AgACAgIAAxkDAANFZX3JcXUXyYOkQb4trG1kgbly5J0AArjSMRvmOOlLHGfsXcphHHgBAAMCAAN4AAMzBA',
+    'AgACAgIAAxkDAANGZX3JccNOEx1Kc2z-otY47eBPynIAArnSMRvmOOlLg_WrHSfrio4BAAMCAAN4AAMzBA'],
+                  ['', '', '', ''], ['', '', '', '']],
+                 [['', '', '', ''], ['', '', '', ''], ['', '', '', ''],
+                  ['', '', '', '']],
+                 [['', '', '', ''], ['', '', '', ''], ['', '', '', ''],
+                  ['', '', '', '']]]
 
-audios = [[["", "", "", ""], ["", "", "", ""],
-           ["AwACAgQAAxkBAAISFmV8tUeRVDnlZX0TSKBryRlkP-ZBAAJuUQAC3X_hU5wXHHMP-HnKMwQ",
-            "AwACAgQAAxkBAAISImV8tizBq6QOPLVXZ0B6vCcx2v7PAAK4UQAC3X_hU8YEelWUB5v3MwQ",
-            "AwACAgQAAxkBAAISJWV8tmSRhZ4REOfzsXi6ViuIroJ9AALHUQAC3X_hU0ARZi2Ky162MwQ",
-            "AwACAgQAAxkBAAISKGV8t1Qf9CwzfwFhOeO6glhWUk_ZAAIVUgAC3X_hU7zaz9GgGyP-MwQ"],
+output_photos_test = [[["", "", "", ""],
+                       [
+                           "AgACAgIAAxkBAAIR9WV8rq8jz6uHFwABH-bPOR5AeKzTVwACcNYxGw5S6UtB0vpBIV7seQEAAwIAA3MAAzME",
+                           "AgACAgIAAxkBAAIR92V8rshV2oLou3T2lk5uIv0iEf1BAAJx1jEbDlLpS1nCtdRk2Gw7AQADAgADcwADMwQ",
+                           "AgACAgIAAxkBAAIR-WV8rtvip-cDx8FfBaXjtN8qOkg1AAJz1jEbDlLpSyR6Wp7ldvM6AQADAgADcwADMwQ",
+                           "AgACAgIAAxkBAAIR-2V8rvMkjV4jJery_tYEnUcQyNrVAAJ01jEbDlLpS-bYUBWGDitiAQADAgADcwADMwQ"],
+                       ["", "", "", ""], ["", "", "", ""]],
+                      [["", "", "", ""], ["", "", "", ""], ["", "", "", ""],
+                       ["", "", "", ""]],
+                      [["", "", "", ""], ["", "", "", ""], ["", "", "", ""],
+                       ["", "", "", ""]]]
+
+audios = [[['', '', '', ''], ['', '', '', ''], ['AwACAgIAAxkDAANNZX3KvU__QHLMem1BXEyaehJDapkAAkhAAALmOOlLGbAjnbmtXckzBA', 'AwACAgIAAxkDAANOZX3Kvtwan2MkAjsgSHRsUvU1g6gAAklAAALmOOlLnw-pLezKt_gzBA', 'AwACAgIAAxkDAANPZX3KviKQuD80o2yg6-oXjEPiI-kAAkpAAALmOOlLEYMDlkP3oj8zBA', 'AwACAgIAAxkDAANQZX3KvrxXLyMdn-lHqeKmiRtK7sgAAktAAALmOOlLuILcl0VnuU0zBA'], ['', '', '', '']], [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']], [['', '', '', ''], ['', '', '', ''], ['', '', '', ''], ['', '', '', '']]]
+
+audios_test = [[["", "", "", ""], ["", "", "", ""],
+           [
+               "AwACAgQAAxkBAAISFmV8tUeRVDnlZX0TSKBryRlkP-ZBAAJuUQAC3X_hU5wXHHMP-HnKMwQ",
+               "AwACAgQAAxkBAAISImV8tizBq6QOPLVXZ0B6vCcx2v7PAAK4UQAC3X_hU8YEelWUB5v3MwQ",
+               "AwACAgQAAxkBAAISJWV8tmSRhZ4REOfzsXi6ViuIroJ9AALHUQAC3X_hU0ARZi2Ky162MwQ",
+               "AwACAgQAAxkBAAISKGV8t1Qf9CwzfwFhOeO6glhWUk_ZAAIVUgAC3X_hU7zaz9GgGyP-MwQ"],
            ["", "", "", ""]],
-          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]],
-          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""], ["", "", "", ""]]]
+          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""],
+           ["", "", "", ""]],
+          [["", "", "", ""], ["", "", "", ""], ["", "", "", ""],
+           ["", "", "", ""]]]
 
 topics = [
-    Topic(topic, "", [SubTopic(stn, [Question(correct_answers[i][j][k], 4, Message(questions[i][j][k], first_photos[i][j][k], audio=audios[i][j][k]),
-                                              Message(information[i][j][k], output_photos[i][j][k]))
-                                     for k in range(4)]) for j, stn in enumerate(sub_topics_name[i])])
+    Topic(topic, "", [SubTopic(stn, [Question(correct_answers[i][j][k], 4,
+                                              Message(questions[i][j][k],
+                                                      first_photos[i][j][k],
+                                                      audio=audios[i][j][k]),
+                                              Message(information[i][j][k],
+                                                      output_photos[i][j][k]))
+                                     for k in range(4)]) for j, stn in
+                      enumerate(sub_topics_name[i])])
     for i, topic in enumerate(topics_name)]
-

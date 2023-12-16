@@ -14,7 +14,14 @@ async def get_answer(callback: CallbackQuery, bot: Bot, state: FSMContext):
     data: dict = await state.get_data()
     num_topic = data["num_topic"]
     y, x = data["num_question"] # Позиция вопроса.
-    username = str(callback.from_user.first_name) + " " + str(callback.from_user.last_name)
+
+    first_name = callback.from_user.first_name
+    if first_name is None:
+        first_name = ""
+    last_name = callback.from_user.last_name
+    if last_name is None:
+        last_name = ""
+    username = str(first_name) + " " + str(last_name)
 
     id_chat = callback.message.chat.id # id чата.
 
