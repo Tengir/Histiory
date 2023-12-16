@@ -88,7 +88,8 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
         ans_user = data["answers_now_question"][username] # Записанный ответ пользователя.
         score_users[username] = score_users.setdefault(username, 0)
         if ans_user == question_now.correct_answer: # Прибавляем, если правильно ответил.
-            score_users[username] += 1
+            print(int(question_now.correct_answer))
+            score_users[username] += 10 * int(question_now.correct_answer)
     await state.update_data(score_users=score_users)
     print("Закончили с ответами")
     ###########################################################################
