@@ -70,7 +70,7 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     msg_send = question_now.message_finish
     msg_question = await send_message(id_chat, bot, message=msg_send)
     await state.update_data(bot_quest_message=msg_question.message_id)
-    await asyncio.sleep(8)
+    await asyncio.sleep(7)
     await bot.delete_message(chat_id=id_chat,
                              message_id=msg_question.message_id)  # Удаляем сообщение с ответом.
     print("Вышли смотреть ответ")
@@ -94,7 +94,11 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
 
     # Проверяем остались ли ещё вопросы.
 
+    if len(data["used_question"]) == topics[num_topic].len_sub_topic * len(topics[num_topic].sub_topic_list[0].question_list):
+        msg = await send_message(id=id_chat, bot=bot, caption=generate_top(score_users))
 
+        await state.update_data(bot_quest_message=msg.message_id)
+        return
 
     ###########################################################################
     # Выслыаем таблицу с вопросами.
