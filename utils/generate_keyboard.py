@@ -18,8 +18,8 @@ def generate_topic_keyboard(topic: Topic, used_buttons: set = None):
     col = topic.count_sub_topic
     kb = InlineKeyboardMarkup(inline_keyboard=
                               [[InlineKeyboardButton(text=names[i], callback_data="None") for i in range(col)]] +
-                              [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"question{j}:{i}") if (j,
-                                                                                                           i) not in used_buttons
+                              [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"question{j}:{i}")
+                                if (j, i) not in used_buttons
                                 else InlineKeyboardButton(text="❌", callback_data="None") for i in
                                 range(col)] for j in range(row)], resize_keyboard=True)
     return kb
