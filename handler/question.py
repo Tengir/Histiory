@@ -33,15 +33,17 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     question_now = topics[num_topic].sub_topic_list[x].question_list[y]
     msg_send = question_now.message_start
     print("Отправляем вопрос")
+
     msg_question = await send_message(id_chat, bot,caption=f"Осталось 15\n", message=msg_send, inline_keyboard=generate_question_keyboard(question_now.answer_count))
+    await state.update_data(bot_quest_message=msg_question.message_id)
     print(msg_question)
     ###########################################################################
 
     # Меняем оставшееся время в сообщении.
     print("Зашли в таймер")
-    for i in range(1, 2):
+    for i in range(1, 5):
         print("ждем")
-        await asyncio.sleep(1)  # ИГРОКИ ОТВЕЧАЮТ.
+        await asyncio.sleep(3)  # ИГРОКИ ОТВЕЧАЮТ.
         # Сообщения с медиа имеют caption и меняются по-разному.
         print("подождали")
         if msg_question.caption is not None:
@@ -69,7 +71,8 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     print("Зашли смотреть ответ")
     msg_send = question_now.message_finish
     msg_question = await send_message(id_chat, bot, message=msg_send)
-    await asyncio.sleep(1)
+    await state.update_data(bot_quest_message=msg_question.message_id)
+    await asyncio.sleep(8)
     await bot.delete_message(chat_id=id_chat,
                              message_id=msg_question.message_id)  # Удаляем сообщение с ответом.
     print("Вышли смотреть ответ")
@@ -99,9 +102,11 @@ async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     print("Готовимя высылать таблицу воппросов")
     print(used_question)
     print(generate_top(score_users)+msg_ans)
-    await send_message(id=id_chat, bot=bot,
+    msg = await send_message(id=id_chat, bot=bot,
                        caption=generate_top(score_users)+msg_ans,
                        inline_keyboard=generate_topic_keyboard(topics[num_topic], used_question))
+
+    await state.update_data(bot_quest_message=msg.message_id)
     print("Выслали таблицу")
 
 
