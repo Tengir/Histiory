@@ -3,9 +3,18 @@ from data.data_topics import topics
 from data_library.topic import Topic
 
 
+def generate_final_keyboard(num: int):
+    kb = InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text="Запустить ещё раз",
+                              callback_data=f"restart")]
+    ], resize_keyboard=True)
+    return kb
+
+
 def generate_question_keyboard(num: int):
     kb = InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=f"{i + 1}", callback_data=f"answer{i}")] for i in
+        [InlineKeyboardButton(text=f"{i + 1}", callback_data=f"answer{i}")] for
+        i in
         range(num)
     ], resize_keyboard=True)
     return kb
@@ -17,11 +26,18 @@ def generate_topic_keyboard(topic: Topic, used_buttons: set = None):
     row = topic.len_sub_topic
     col = topic.count_sub_topic
     kb = InlineKeyboardMarkup(inline_keyboard=
-                              [[InlineKeyboardButton(text=names[i], callback_data="None") for i in range(col)]] +
-                              [[InlineKeyboardButton(text=str((j + 1) * 10), callback_data=f"question{j}:{i}") if (j,
-                                                                                                           i) not in used_buttons
-                                else InlineKeyboardButton(text="❌", callback_data="None") for i in
-                                range(col)] for j in range(row)], resize_keyboard=True)
+                              [[InlineKeyboardButton(text=names[i],
+                                                     callback_data="None") for
+                                i in range(col)]] +
+                              [[InlineKeyboardButton(text=str((j + 1) * 10),
+                                                     callback_data=f"question{j}:{i}") if (
+                                                                                          j,
+                                                                                          i) not in used_buttons
+                                else InlineKeyboardButton(text="❌",
+                                                          callback_data="None")
+                                for i in
+                                range(col)] for j in range(row)],
+                              resize_keyboard=True)
     return kb
 
 
