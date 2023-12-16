@@ -1,6 +1,3 @@
-from data_library.sub_topic import SubTopic
-
-
 class Topic:
     def __init__(self, name, description: str = "", sub_topic_list: list = None):
         self.name = name

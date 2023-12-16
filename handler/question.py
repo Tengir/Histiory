@@ -1,7 +1,6 @@
 from aiogram import Router, Bot, F
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
-from aiogram.filters import StateFilter
 import asyncio
 
 from utils.send_message import send_message
@@ -9,12 +8,11 @@ from utils.generate_keyboard import generate_question_keyboard, generate_topic_k
 from utils.generate_top import generate_top
 
 from data.data_topics import topics
-from state import StateBot
 
 router = Router()
 
 
-@router.callback_query(F.data.startswith('question'), StateFilter(StateBot.passes_quest))
+@router.callback_query(F.data.startswith('question'))
 async def question(callback: CallbackQuery, bot: Bot, state: FSMContext):
     print("Зашли в квестион")
     data: dict = await state.get_data()

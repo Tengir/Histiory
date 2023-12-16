@@ -1,18 +1,13 @@
 from aiogram import Router, Bot, F
 from aiogram.types import CallbackQuery
 from aiogram.fsm.context import FSMContext
-from aiogram.filters import StateFilter
-
-from utils.send_message import send_message
-from utils.generate_keyboard import generate_question_keyboard
 
 from data.data_topics import topics
-from state import StateBot
 
 router = Router()
 
 
-@router.callback_query(F.data.startswith('answer'), StateFilter(StateBot.passes_quest))
+@router.callback_query(F.data.startswith('answer'))
 async def get_answer(callback: CallbackQuery, bot: Bot, state: FSMContext):
     print("Зашли в ответы")
     await callback.answer("Ответ записан")

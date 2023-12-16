@@ -1,9 +1,5 @@
-import logging
+from aiogram import Bot
 
-from aiogram import Router, Bot
-from aiogram.types import Message
-from aiogram.types.input_media_video import InputMediaVideo
-from aiogram.types.input_file import FSInputFile
 from aiogram.types import InlineKeyboardMarkup
 
 from data_library.message import Message

@@ -6,7 +6,6 @@ from utils.send_message import send_message
 from utils.generate_keyboard import generate_topic_keyboard
 
 from data.data_topics import topics
-from state import StateBot
 
 
 router = Router()
@@ -14,8 +13,6 @@ router = Router()
 
 @router.callback_query(F.data.startswith('start'))
 async def start_quest(callback: CallbackQuery, bot: Bot, state: FSMContext):
-    await state.set_state(StateBot.passes_quest) # Стейт проходим квест.
-
     data: dict = await state.get_data()
     id_chat = callback.message.chat.id  # id чата.
     await bot.delete_message(chat_id=id_chat, message_id=callback.message.message_id) # Удаляем предыдущ. сообщ..
@@ -31,6 +28,7 @@ async def start_quest(callback: CallbackQuery, bot: Bot, state: FSMContext):
         msg_ans = topics[num_topic].name
 
     msg = await send_message(id=id_chat, bot=bot, caption=msg_ans, inline_keyboard=generate_topic_keyboard(topics[num_topic]))
+    await state.clear()
     await state.update_data(num_topic=num_topic, score_users=dict(),
                             used_question=set(), answers_now_question=dict(),
                             bot_quest_message=msg.message_id)
